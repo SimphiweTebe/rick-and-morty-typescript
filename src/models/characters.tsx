@@ -29,9 +29,7 @@ export interface ISingleCharacter {
       dimension: string
     },
 
-    episode:{
-      name: string
-    },
+    episode:[{ name: string}],
     
     location:{
       name: string
