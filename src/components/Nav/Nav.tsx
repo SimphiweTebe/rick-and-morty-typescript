@@ -15,7 +15,7 @@ const StyledNav = styled.nav`
 function Nav() {
   return (
     <StyledNav data-testid="nav">
-        <Link to="/">RickAndMorty</Link>
+        <Link to="/" title='link'>RickAndMorty</Link>
     </StyledNav>
   )
 }

@@ -18,6 +18,24 @@ export interface ICharacters {
     image: string
 }
 
-// export interface ISingleCharacter {
+export interface ISingleCharacter {
+    name: string,
+    image: string,
+    species: string,
+    created: string,
 
-// }
+    origin:{
+      name: string,
+      dimension: string
+    },
+
+    episode:{
+      name: string
+    },
+    
+    location:{
+      name: string
+      dimension: string
+      type: string
+    }
+}

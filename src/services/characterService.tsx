@@ -8,7 +8,6 @@ export const getCharacters = async (page: number, dispatch: any) => {
         const {data} = await apolloClient.query({ query: GET_ALL_CHARACTERS, variables: page })
         dispatch(setCharacters(data.characters))    
     } catch (error) {
-        console.log(error);
-        
+        console.log(error);   
     }
 }
