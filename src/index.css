@@ -14,6 +14,10 @@ a{
   color: unset;
 }
 
+ul li{
+  list-style: none;
+}
+
 .grid{
   position: relative;
   display: grid;

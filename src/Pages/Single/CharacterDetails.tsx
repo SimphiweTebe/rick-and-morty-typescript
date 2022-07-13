@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import useScrollTop from '../../hooks/useScrollTop';
 import {ISingleCharacter} from '../../models/characters';
@@ -23,14 +24,25 @@ const Header = styled.div`
   }
 `;
 
+const Button = styled.button`
+    display: inline-block;
+    position: relative;
+    padding: 8px 30px;
+`
+
 type Props = {
     character: ISingleCharacter
 }
 
 function CharacterDetails({ character }: Props) {
 
-    const {location, origin, episode} = character;
     useScrollTop();
+    const {location, origin, episode} = character;
+    const [showEpisodes, setShowEpisodes] = useState(false);
+
+    const toggleEpisodes = ()=> {
+        setShowEpisodes(!showEpisodes)
+    } 
     
   return (
     <Header>
@@ -40,23 +52,27 @@ function CharacterDetails({ character }: Props) {
         <div className="details">
             <h1>{character.name}</h1>
             <h4>Species: {character.species}</h4>
-            <h5>Location:</h5>
+            
             <ul className='details__location'>
-                <li>Dimension: {location.dimension}</li>
-                <li>Name: {location.name}</li>
-                <li>Type: {location.type}</li>
+                <li><strong>Dimension:</strong> {location.dimension}</li>
+                <li><strong>Name:</strong> {location.name}</li>
+                <li><strong>Type:</strong> {location.type}</li>
             </ul>
-            <h5>Origin:</h5>
+            
             <ul className='details__origin'>
-                <li>Dimension: {origin.dimension}</li>
-                <li>Name: {origin.name}</li>
+                <li><strong>Dimension:</strong> {origin.dimension}</li>
+                <li><strong>Name:</strong> {origin.name}</li>
             </ul>
-            <h5>Episodes:</h5>
-            <ul className="details__episodes">
+            <Button onClick={toggleEpisodes}>{ showEpisodes ? 'Hide' : 'Show'} Episode list</Button>
+            {
+                showEpisodes && (
+                    <ol className="details__episodes">
                 {
-                    episode && episode.map(ep => <li key={ep.name}>{ep.name}</li>)
+                    episode.map(ep => <li key={ep.name}>{ep.name}</li>)
                 }
-            </ul>
+                    </ol>
+                )
+            }
         </div>
        
     </Header>
