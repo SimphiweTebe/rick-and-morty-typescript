@@ -20,21 +20,24 @@ export const GET_ALL_CHARACTERS = gql`
 }
 `
 export const GET_SINGLE_CHARACTER = gql`
-    query($id: ID){
-      characters(id: $id){
-        info{
-          count
-          pages
-          next
-          prev
-        }
-        results{
-          id
+    query($id: ID!){
+      character(id: $id){
+        name
+        image
+        species
+        created
+        origin{
           name
-          status
-          species
-          image
+          dimension
         }
-      }
+        episode{
+          name
+        }
+        location{
+          name
+          dimension
+          type
+        }
+    }
 }
 `
