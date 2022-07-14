@@ -1,6 +1,14 @@
 import React from 'react'
 
-function Pagination() {
+type Props = {
+  currentPage: number;
+  maxPageLimit: number;
+  minPageLimit: number;
+}
+
+function Pagination(props: Props) {
+
+  const { currentPage, maxPageLimit, minPageLimit} = props;
   return (
     <div>Pagination</div>
   )
