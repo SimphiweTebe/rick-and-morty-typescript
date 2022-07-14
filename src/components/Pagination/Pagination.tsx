@@ -1,14 +1,21 @@
-import React from 'react'
+import styled from "styled-components";
+
+const Paginator = styled.div`
+  position: relative;
+  width: 100%;
+`;
 
 type Props = {
-  currentPage: number;
-  maxPageLimit: number;
-  minPageLimit: number;
+  info: {
+    pages: number;
+    next: number | null;
+    prev: number | null
+  }
 }
 
-function Pagination(props: Props) {
+function Pagination({info}: Props) {
 
-  const { currentPage, maxPageLimit, minPageLimit} = props;
+  const { pages, next, prev} = info;
   return (
     <div>Pagination</div>
   )

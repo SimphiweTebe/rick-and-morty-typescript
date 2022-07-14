@@ -15,6 +15,9 @@ function Home() {
   useEffect(()=>{
     getCharacters(page, dispatch);
   },[page, dispatch])
+
+  console.log(data.info);
+  
   
   return (
     <Container>
@@ -23,7 +26,7 @@ function Home() {
           data.isLoading ? <h1>Loading</h1> : data.results && data.results.map(item => <Card key={item.id} character={item} />)
         }
       </div>
-      <Pagination />
+      <Pagination info={data.info}/>
     </Container>
   )
 }
