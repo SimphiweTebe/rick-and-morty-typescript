@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import useScrollTop from '../../hooks/useScrollTop';
 import {ISingleCharacter} from '../../models/characters';
 
 const Header = styled.div`
@@ -36,7 +35,6 @@ type Props = {
 
 function CharacterDetails({ character }: Props) {
 
-    useScrollTop();
     const {location, origin, episode} = character;
     const [showEpisodes, setShowEpisodes] = useState(false);
 

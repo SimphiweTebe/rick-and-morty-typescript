@@ -15,11 +15,12 @@ function Home() {
   useEffect(()=>{
     getCharacters(page, dispatch);
   },[page, dispatch])
+  
   return (
     <Container>
       <div className="grid">
         {
-          data.results && data.results.map(item => <Card key={item.id} character={item} />)
+          data.isLoading ? <h1>Loading</h1> : data.results && data.results.map(item => <Card key={item.id} character={item} />)
         }
       </div>
       <Pagination />
