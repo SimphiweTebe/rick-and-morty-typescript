@@ -52,12 +52,14 @@ function CharacterDetails({ character }: Props) {
             <h4>Species: {character.species}</h4>
             
             <ul className='details__location'>
+                <li><h5>Dimension info</h5></li>
                 <li><strong>Dimension:</strong> {location.dimension}</li>
                 <li><strong>Name:</strong> {location.name}</li>
                 <li><strong>Type:</strong> {location.type}</li>
             </ul>
             
             <ul className='details__origin'>
+                <li><h5>Origin info</h5></li>
                 <li><strong>Dimension:</strong> {origin.dimension}</li>
                 <li><strong>Name:</strong> {origin.name}</li>
             </ul>
