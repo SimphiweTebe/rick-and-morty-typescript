@@ -6,6 +6,7 @@ export interface IResults {
             next: number
             prev: number | null
         },
+        isLoading: boolean,
         results: ICharacters[]
     }
 }

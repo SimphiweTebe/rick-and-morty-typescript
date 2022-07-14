@@ -12,6 +12,7 @@ interface CharacterState {
         next: number;
         prev: null | number;
     },
+    isLoading: boolean,
     results: ICharacters[]
 }
 
@@ -22,6 +23,7 @@ const initialState: CharacterState = {
         next: 0,
         prev: null
     },
+    isLoading: false,
     results: [{
         id: "1",
         image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
@@ -36,12 +38,16 @@ export const characterSlice = createSlice({
     initialState,
     reducers: {
         setCharacters(state, action){
+            state.isLoading = false;
             state.results = action.payload.results 
             state.info = action.payload.info
+        },
+        charactersLoading(state){
+            state.isLoading = true;
         }
     }
 });
 
-export const { setCharacters } = characterSlice.actions;
+export const { setCharacters, charactersLoading } = characterSlice.actions;
 
 export default characterSlice.reducer;
