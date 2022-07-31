@@ -1,35 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import type { PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 // import type { RootState } from "./store";
 
 
-import { ICharacters } from "../models/characters";
+import { IResults } from "../models/characters";
 
-interface CharacterState {
-    info: {
-        count: number;
-        pages: number;
-        next: number;
-        prev: null | number;
-    },
-    isLoading: boolean,
-    results: ICharacters[]
-}
-
-const initialState: CharacterState = {
+const initialState: IResults = {
     info: {
         count: 0,
         pages: 0,
         next: 0,
         prev: null
     },
+    currentPage: 1,
     isLoading: false,
     results: [{
-        id: "1",
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-        name: "Rick Sanchez",
-        species: "Human",
-        status: "Alive",
+        id: "",
+        image: "",
+        name: "",
+        species: "",
+        status: "",
     }]
 }
 

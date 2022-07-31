@@ -1,27 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import {ISingleCharacter} from '../../models/characters';
-
-const Header = styled.div`
-  position: relative;
-  display: flex;
-  gap: 50px;
-
-  .img{
-    display: block;
-    width: 100%;
-    flex: 1;
-
-    img{
-        width: 100%;
-    }
-  }
-
-  .details{
-    position: relative;
-    flex: 2;
-  }
-`;
+import {ICharacterDetails} from '../../models/characters';
 
 const Button = styled.button`
     display: inline-block;
@@ -30,7 +9,7 @@ const Button = styled.button`
 `
 
 type Props = {
-    character: ISingleCharacter
+    character: ICharacterDetails
 }
 
 function CharacterDetails({ character }: Props) {
@@ -78,5 +57,26 @@ function CharacterDetails({ character }: Props) {
     </Header>
   )
 }
+
+const Header = styled.div`
+  position: relative;
+  display: flex;
+  gap: 50px;
+
+  .img{
+    display: block;
+    width: 100%;
+    flex: 1;
+
+    img{
+        width: 100%;
+    }
+  }
+
+  .details{
+    position: relative;
+    flex: 2;
+  }
+`;
 
 export default CharacterDetails
