@@ -26,65 +26,37 @@ function Pagination({page, totalPages, handlePagination}: Props) {
                 <button onClick={() => handlePagination(page - 2)} className="paginate__item">{page - 2}</button>
               )
             }
-            <button className="paginate__item" onClick={() => handlePagination(page)}>{page}</button>
-            <button className="paginate__item" onClick={() => handlePagination(page + 1)}>{page + 1}</button>
-            <button className="paginate__separator">...</button>
+            {
+              page > 2 && (
+                <button onClick={() => handlePagination(page - 1)} className="paginate__item">{page - 1}</button>
+              )
+            }
+            {
+              page !== 1 && page !== totalPages && (
+                <button className="paginate__item" onClick={() => handlePagination(page)}>{page}</button>
+              )
+            }
+            {
+              page < totalPages -1 && (
+                <button className="paginate__item" onClick={() => handlePagination(page + 1)}>{page + 1}</button>
+              )
+            }
+            {
+              page === 1 && totalPages > 3 && (
+                <button className="paginate__item" onClick={() => handlePagination(page + 2)}>{page + 2}</button>
+              )
+            }
+            {
+              page < totalPages - 2 && <button className="paginate__separator">...</button>
+            }
             <button className="paginate__item" onClick={() => handlePagination(totalPages)}>{totalPages}</button>
-            <button className="paginate__next" data-testid="next__btn" onClick={() => handlePagination(page + 1)}>&gt;</button>
+            {
+              page !== totalPages && (
+                <button className="paginate__next" data-testid="next__btn" onClick={() => handlePagination(page + 1)}>&gt;</button>
+              )
+            }
           </div>
         </Paginator>
-        {/* <Paginator>
-          <div className="paginate">
-            <button
-              onClick={() => handlePagination(page - 1)}
-              type="button"
-              className="paginate__next" data-testid="prev__btn"
-            >
-              &lt;
-            </button>        
-            <button
-              onClick={() => handlePagination(1)}
-              type="button"
-              className="paginate__item"
-            >
-              {1}
-            </button>
-            <button className="paginate__separator">...</button>      
-            <button
-              onClick={() => handlePagination(page - 1)}
-              type="button"
-              className="paginate__item"
-            >
-              {page - 1}
-            </button>        <button
-              onClick={() => handlePagination(page)}
-              type="button"
-              className="paginate__item"
-            >
-              {page}
-            </button>        <button
-              onClick={() => handlePagination(page + 1)}
-              type="button"
-              className="paginate__item"
-            >
-              {page + 1}
-            </button>
-            <button className="paginate__separator">...</button>        
-            <button
-              onClick={() => handlePagination(totalPages)}
-              type="button"
-              className="paginate__item"
-            >
-              {totalPages}
-            </button>        <button
-              onClick={() => handlePagination(page + 1)}
-              type="button"
-              className="paginate__next" data-testid="next__btn"
-            >
-              &gt;
-            </button>
-          </div>
-        </Paginator> */}
     </>
   )
 }
