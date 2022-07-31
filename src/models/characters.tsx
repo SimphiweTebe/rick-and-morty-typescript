@@ -1,17 +1,20 @@
-export interface IResults {
-    characters:{
-        info :{
-            count: number
-            pages: number
-            next: number
-            prev: number | null
-        },
-        isLoading: boolean,
-        results: ICharacters[]
-    }
+export interface ICharacters{
+    characters: IResults
 }
 
-export interface ICharacters {
+export interface IResults {
+    info :{
+        count: number
+        pages: number
+        next: number
+        prev: number | null
+    },
+    currentPage?: number | null,
+    isLoading?: boolean,
+    results: ISingleCharacter[]
+}
+
+export interface ISingleCharacter {
     id: string,
     name: string,
     status: string,
@@ -19,7 +22,7 @@ export interface ICharacters {
     image: string
 }
 
-export interface ISingleCharacter {
+export interface ICharacterDetails {
     name: string,
     image: string,
     species: string,

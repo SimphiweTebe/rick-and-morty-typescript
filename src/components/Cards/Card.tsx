@@ -1,6 +1,29 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ICharacters } from '../../models/characters';
+import { ISingleCharacter } from '../../models/characters';
+
+type Props = {
+    character: ISingleCharacter;
+}
+
+function Card({ character }: Props) {
+    
+    const {id, image, name, species, status} = character;
+    
+  return (
+    <StyledCard>
+        <Link to={`/character/${id}`}>
+            <img src={image} alt="" />
+        </Link>
+        <div className="details">
+            <h4>{name}</h4>
+            <span><strong>Species:</strong> {species}</span>
+            <span><strong>Status:</strong> {status}</span>
+        </div>
+        <Link className="view" to={`/character/${id}`}>view</Link>
+    </StyledCard>
+  )
+}
 
 const StyledCard = styled.div`
     position: relative;
@@ -33,27 +56,5 @@ const StyledCard = styled.div`
         font-weight: 600;
     }
 `;
-
-type Character = {
-    character: ICharacters
-}
-
-function Card({ character }: Character) {
-    const {id, image, name, species, status} = character;
-    
-  return (
-    <StyledCard>
-        <Link to={`/character/${id}`}>
-            <img src={image} alt="" />
-        </Link>
-        <div className="details">
-            <h4>{name}</h4>
-            <span><strong>Species:</strong> {species}</span>
-            <span><strong>Status:</strong> {status}</span>
-        </div>
-        <Link className="view" to={`/character/${id}`}>view</Link>
-    </StyledCard>
-  )
-}
 
 export default Card

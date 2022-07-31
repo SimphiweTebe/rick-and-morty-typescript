@@ -3,6 +3,24 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {IResults} from '../../models/characters';
 
+type Props = { 
+  characters: IResults
+}
+
+function Nav() {
+  
+  const data = useSelector((state: Props) => state.characters?.info);
+  
+  return (
+    <StyledNav data-testid="nav">
+        <div className="data">
+          <Link to="/" title='link'>RickAndMorty</Link>
+          <span className="data__stats">Found {data.count} results in {data.pages} pages</span>
+        </div>
+    </StyledNav>
+  )
+}
+
 const StyledNav = styled.nav`
     position: fixed;
     left: 0;
@@ -34,21 +52,5 @@ const StyledNav = styled.nav`
       }
     }
 `
-
-
-
-function Nav() {
-  const data = useSelector((state: IResults) => state.characters);
-  const {info} = data;
-  
-  return (
-    <StyledNav data-testid="nav">
-        <div className="data">
-          <Link to="/" title='link'>RickAndMorty</Link>
-          <span className="data__stats">Found {info.count} results in {info.pages} pages</span>
-        </div>
-    </StyledNav>
-  )
-}
 
 export default Nav
