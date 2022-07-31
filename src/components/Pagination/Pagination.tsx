@@ -79,7 +79,15 @@ const Paginator = styled.div`
       height: 40px;
       border-radius: 50%;
       border: none;
+    }
+
+    &__item{
       cursor: pointer;
+      
+      &:hover{
+        color: #fff;
+        background-color: blue;
+      }
     }
   }
 
